@@ -55,6 +55,34 @@ userSchema.pre('save', function (next) {
   }
 })
 
+userSchema.methods.comparePassword = function (pw) {
+  return bcrypt
+    .compare(pw, this.password)
+    .then(isMatch => isMatch)
+    .catch(err => err)
+}
+
+userSchema.methods.generateToken = function () {
+  let user = this
+  const token = jwt.sign(user._id.toHexString(), 'secret')
+  user.token = token
+  return user
+    .save()
+    .then(user => user)
+    .catch(err => err)
+}
+
+userSchema.statics.findByToken = function (token) {
+  let user = this
+  //토큰 decode하기
+  return jwt.verify(token, 'secret', function (err, decoded) {
+    return user
+      .findOne({ _id: decoded, token: token })
+      .then(user => user)
+      .catch(err => err)
+  })
+}
+
 const User = mongoose.model('User', userSchema)
 
 module.exports = { User }
