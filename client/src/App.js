@@ -6,6 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import promiseMiddleware from 'redux-promise'
 import ReduxThunk from 'redux-thunk'
 import rootReducer from './modules'
+import './App.scss'
 
 const store = createStore(
   rootReducer,

@@ -8,21 +8,107 @@ const AUTH_USER = 'auth_user'
 const LOGOUT_USER = 'logout_user'
 
 // 액션 함수 생성
-export const registerUser = async dataToSubmit => {
-  const request = await axios.post(`${USER_SERVER}/register`, dataToSubmit)
-  return {
-    type: REGISTER_USER,
-    payload: request.data,
+export const registerUser = async data => {
+  try {
+    const request = await axios.post(`${USER_SERVER}/register`, data, {
+      withCredentials: true,
+    })
+    return {
+      type: REGISTER_USER,
+      payload: request.data,
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export const loginUser = async data => {
+  try {
+    const request = await axios.post(`${USER_SERVER}/login`, data, {
+      withCredentials: true,
+    })
+    return {
+      type: LOGIN_USER,
+      payload: request.data,
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+// export const loginUser = dataToSubmit => {
+//   const request = axios
+//     .post(`${USER_SERVER}/login`, dataToSubmit, { withCredentials: true })
+//     .then(response => response.data)
+
+//   return {
+//     type: LOGIN_USER,
+//     payload: request,
+//   }
+// }
+
+export const auth = async () => {
+  try {
+    const request = await axios.get(`${USER_SERVER}/auth`, {
+      withCredentials: true,
+    })
+    console.log('request', request)
+    return {
+      type: AUTH_USER,
+      payload: request.data,
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+// export const auth = () => {
+//   const request = axios
+//     .get(`${USER_SERVER}/auth`, { withCredentials: true })
+//     .then(response => response.data)
+
+//   return {
+//     type: AUTH_USER,
+//     payload: request,
+//   }
+// }
+
+export const logoutUser = async () => {
+  try {
+    const request = await axios.get(`${USER_SERVER}/logout`, {
+      withCredentials: true,
+    })
+    return {
+      type: LOGOUT_USER,
+      payload: request.data,
+    }
+  } catch (e) {
+    console.log(e)
   }
 }
 
 // 리듀서 함수
-export default function user(state = {}, action) {
+export default function userReducer(state = {}, action) {
   switch (action.type) {
     case REGISTER_USER:
       return {
         ...state,
         register: action.payload,
+      }
+    case LOGIN_USER:
+      return {
+        ...state,
+        loginSucces: action.payload,
+      }
+    case AUTH_USER:
+      return {
+        ...state,
+        userData: action.payload,
+      }
+    case LOGOUT_USER:
+      return {
+        ...state,
+        logoutSucces: action.payload,
       }
     default:
       return state

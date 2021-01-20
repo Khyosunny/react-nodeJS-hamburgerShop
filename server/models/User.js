@@ -73,6 +73,7 @@ userSchema.methods.generateToken = function () {
 }
 
 userSchema.statics.findByToken = function (token) {
+  console.log('token', token)
   let user = this
   //토큰 decode하기
   return jwt.verify(token, 'secret', function (err, decoded) {

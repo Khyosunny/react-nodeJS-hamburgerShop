@@ -1,1 +1,1 @@
-export const USER_SERVER = '/api/user'
+export const USER_SERVER = 'http://localhost:5000/api/users'
