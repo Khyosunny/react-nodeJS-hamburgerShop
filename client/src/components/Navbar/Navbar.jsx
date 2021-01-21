@@ -1,18 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link, useHistory } from 'react-router-dom'
+
 import { RightMenu } from './Sections'
 
+import styles from './Navbar.module.scss'
+
 export default function Navbar() {
+  const user = useSelector(state => state.user)
+  const history = useHistory()
+  const dispatch = useDispatch()
+
   return (
-    <nav className="navbar">
-      <ul>
-        <li>
-          <Link to="/">
-            <h1>효선이네 햄버거</h1>
-          </Link>
-        </li>
-      </ul>
-      <RightMenu />
-    </nav>
+    <div className={styles.Container}>
+      <nav className={styles.NavContainer}>
+        <ul>
+          <li>
+            <Link to="/">
+              <h1>햄버거 딜리버리</h1>
+            </Link>
+          </li>
+        </ul>
+        <RightMenu />
+      </nav>
+    </div>
   )
 }

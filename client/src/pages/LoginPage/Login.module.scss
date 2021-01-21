@@ -1,17 +1,17 @@
 .Container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // width: 100%;
+  // height: 100%;
+  // background-color: #ffc27d;
   h2 {
     padding: 100px 0 0;
   }
 
   & .FormContainer {
-    @extend .Container;
+    // @extend .Container;
     width: 70%;
 
     label {

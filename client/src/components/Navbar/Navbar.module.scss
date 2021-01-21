@@ -1,0 +1,28 @@
+.Container {
+  position: fixed;
+  background-color: #e22626;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & .NavContainer {
+    // background-color: #ff9f9f;
+    width: 1180px;
+    height: 100px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      display: flex;
+      li {
+        padding: 0 20px;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

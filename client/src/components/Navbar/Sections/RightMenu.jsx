@@ -19,20 +19,22 @@ export default function RightMenu() {
       })
       .catch(err => console.log(err))
   }
-  if (user.userData && !user.userData.isAuth) {
-    return (
-      <div>
-        <ul>
+  return (
+    <ul>
+      {user.userData && !user.userData.isAuth ? (
+        <>
           <li>
             <Link to="/login">로그인</Link>
           </li>
           <li>
             <Link to="/register">회원가입</Link>
           </li>
-        </ul>
-      </div>
-    )
-  } else {
-    return <button onClick={onLogout}>로그아웃</button>
-  }
+        </>
+      ) : (
+        <li>
+          <button onClick={onLogout}>로그아웃</button>
+        </li>
+      )}
+    </ul>
+  )
 }

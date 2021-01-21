@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { USER_SERVER } from '../components/config'
+import { USER_SERVER } from '../config'
 
 // 액션 타입 생성
 const REGISTER_USER = 'register_user'
