@@ -1,0 +1,197 @@
+@import '../../styles/mixin', '../../styles/variables';
+
+.CartItemContainer {
+  @include flex(center, flex-start, column);
+  position: relative;
+  width: 100%;
+  background-color: $color-white;
+  margin-top: 20px;
+  padding: 20px 100px 40px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px 0px $color-right-gray;
+  .Close {
+    position: absolute;
+    background-color: transparent;
+    top: 20px;
+    right: 20px;
+    svg {
+      font-size: 40px;
+    }
+  }
+}
+
+.CartMid {
+  @include flex(space-between, center);
+  width: 100%;
+  padding-bottom: 20px;
+  margin: 20px 0;
+  border-bottom: 1px dashed $color-right-gray;
+
+  .TextAlign {
+    flex-direction: column;
+    h1 {
+      font-size: base-font-size('large');
+      font-weight: base-font-weight('bold');
+    }
+    h2 {
+      font-size: base-font-size('medium');
+      font-weight: base-font-weight('bold');
+    }
+  }
+  img {
+    max-width: 40%;
+  }
+}
+
+.CartBottom {
+  @include flex(space-between, center, row);
+  width: 100%;
+
+  .CountBox {
+    @include flex(space-between, center, row);
+    border-radius: 50px;
+    border: 2px solid $color-right-gray;
+    height: 40px;
+    width: 200px;
+    h2 {
+      font-size: base-font-size('regular');
+      margin: 0;
+    }
+    .Count {
+      padding: 0 20px;
+    }
+    .Plus {
+      border-radius: 0 50% 50% 0;
+      width: 30%;
+      height: 100%;
+      background: initial;
+      color: $main-color;
+    }
+    .Minus {
+      border-radius: 50% 0 0 50%;
+      width: 30%;
+      height: 100%;
+      background: initial;
+      color: $main-color;
+    }
+  }
+
+  .TotalPrice {
+    @include flex(flex-end, center);
+    width: 60%;
+    p {
+      font-size: base-font-size('regular');
+      font-weight: base-font-weight('semi-bold');
+    }
+
+    h3 {
+      width: 50%;
+      text-align: right;
+      color: $color-red;
+      font-size: base-font-size('medium');
+      font-weight: base-font-weight('bold');
+    }
+  }
+}
+
+@include respond-to('tablet') {
+  .CartItemContainer {
+    padding: 20px 20px 40px;
+    .Close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  .CartMid {
+    .TextAlign {
+      h1 {
+        text-align: start;
+        font-size: small-font-size('large');
+      }
+      h2 {
+        font-size: small-font-size('medium');
+      }
+    }
+  }
+
+  .CartBottom {
+    .CountBox {
+      width: 160px;
+      h2 {
+        font-size: small-font-size('regular');
+      }
+      .Count {
+        padding: 0;
+      }
+    }
+
+    .TotalPrice {
+      @include flex(flex-end, center);
+      width: 70%;
+      p {
+        font-size: small-font-size('regular');
+      }
+
+      h3 {
+        width: 65%;
+        font-size: small-font-size('medium');
+      }
+    }
+  }
+}
+
+@include respond-to('mobile') {
+  .CartItemContainer {
+    padding: 10px 10px 20px;
+    margin-top: 10px;
+    .Close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      svg {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .CartMid {
+    .TextAlign {
+      h1 {
+        text-align: start;
+        font-size: small-font-size('regular');
+        font-weight: base-font-weight('semi-bold');
+      }
+      h2 {
+        font-size: small-font-size('regular');
+        font-weight: base-font-weight('semi-bold');
+      }
+    }
+  }
+
+  .CartBottom {
+    .CountBox {
+      width: 120px;
+      h2 {
+        font-size: small-font-size('small');
+      }
+      .Count {
+        padding: 0;
+      }
+    }
+
+    .TotalPrice {
+      @include flex(flex-end, center);
+      width: 60%;
+      p {
+        font-size: base-font-size('small');
+      }
+
+      h3 {
+        width: 65%;
+        font-size: base-font-size('regular');
+      }
+    }
+  }
+}

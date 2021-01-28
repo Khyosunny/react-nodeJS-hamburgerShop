@@ -1,0 +1,44 @@
+@import './variables';
+
+/* 반응형 mixin */
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+      type-of($raw-query) == 'string',
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error '`#{$breakpoint}` 값을 찾을 수 없다. ';
+  }
+}
+
+/* flex 정렬 */
+@mixin flex($jus, $ali, $dir: row) {
+  display: flex;
+  justify-content: $jus;
+  align-items: $ali;
+  flex-direction: $dir;
+}
+
+//////////// function ////////////
+/* 기본 폰트사이즈 함수 */
+@function base-font-size($size) {
+  @return map-get($base-font-size, $size);
+}
+
+/* 기본 폰트굵기 함수 */
+@function base-font-weight($weight) {
+  @return map-get($base-font-weight, $weight);
+}
+
+/* 모바일 폰트사이즈 함수 */
+@function small-font-size($size) {
+  @return map-get($small-font-size, $size);
+}

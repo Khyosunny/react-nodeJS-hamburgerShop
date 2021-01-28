@@ -1,0 +1,220 @@
+@import '../../styles/mixin', '../../styles/variables';
+@import '../../components/PostNum/PostNum', '../../components/CartItem/CartItem';
+
+@mixin defaultBox {
+  background-color: $color-white;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 50px 0;
+
+  .ItemBox {
+    @include flex(flex-start, center, column);
+    margin-top: 20px;
+  }
+
+  .AddrBox {
+    @include flex(flex-start, flex-start, column);
+    @include defaultBox;
+    padding: 40px 100px;
+
+    .AddrIntro {
+      @include flex(space-between, center);
+      width: 100%;
+      button {
+        padding: 10px 15px;
+        background-color: $color-red;
+        color: $color-white;
+        border-radius: 5px;
+        font-size: base-font-size('small');
+        font-weight: base-font-weight('bold');
+      }
+    }
+
+    .Addr {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+
+      .AddrText {
+        padding: 20px 0 10px;
+        display: flex;
+        width: 100%;
+        .AddrTextBor {
+          border-bottom: 1px solid $color-right-gray;
+          padding: 10px;
+          min-width: 30%;
+        }
+        .active {
+          border: none;
+        }
+        h4 {
+          padding: 10px;
+          margin-right: 10px;
+        }
+        button {
+          padding: 4px 12px;
+          border-radius: 5px;
+          margin: 0 5%;
+          font-size: base-font-size('micro');
+          font-weight: base-font-weight('semi-bold');
+        }
+
+        input {
+          border-bottom: 1px solid $color-right-gray;
+          padding: 10px;
+          min-width: 40%;
+          font-size: base-font-size('micro');
+          font-weight: base-font-weight('semi-bold');
+        }
+      }
+      .AddrText:nth-of-type(2) {
+        .AddrTextBor {
+          min-width: 70%;
+        }
+      }
+    }
+  }
+
+  .AllPrice {
+    @include flex(space-between, center);
+    @include defaultBox;
+    padding: 40px 100px;
+
+    h2 {
+      font-size: base-font-size('medium');
+      font-weight: base-font-weight('bold');
+    }
+
+    p {
+      color: $color-red;
+      font-size: base-font-size('medium');
+      font-weight: base-font-weight('bold');
+    }
+  }
+
+  .BtnBox {
+    @include flex(space-between, center);
+    width: 100%;
+    margin-top: 20px;
+    button {
+      @include flex(center, center);
+      font-size: base-font-size('medium');
+      font-weight: base-font-weight('bold');
+      padding: 20px;
+      width: 49.5%;
+      color: $color-white;
+      background: $main-color;
+      &:active {
+        background-color: #000;
+      }
+      border-radius: 5px;
+    }
+
+    .Order {
+      background: $color-red;
+      &:active {
+        background-color: darken($color-red, 10%);
+      }
+    }
+  }
+}
+
+@include respond-to('tablet') {
+  .Container {
+    padding-top: 20px;
+    h1 {
+      text-align: center;
+    }
+    .ItemBox {
+      margin-top: 0;
+    }
+    .AddrBox {
+      padding: 10px 20px;
+
+      .Addr {
+        flex-direction: column;
+        .AddrText {
+          padding: 10px 0;
+          display: flex;
+          align-items: center;
+          .AddrTextBor {
+            padding: 10px;
+            min-width: 20%;
+          }
+
+          h4 {
+            padding: 0;
+            width: 30px;
+            font-size: small-font-size('micro');
+          }
+          button {
+            padding: 4px;
+            font-size: small-font-size('micro');
+          }
+          input {
+            min-width: 50%;
+          }
+        }
+      }
+      .AddrText:nth-of-type(2) {
+        .AddrTextBor {
+          min-width: 55%;
+        }
+      }
+    }
+
+    .AllPrice {
+      padding: 20px 20px;
+      h2 {
+        font-size: small-font-size('regular');
+      }
+
+      p {
+        font-size: small-font-size('medium');
+      }
+    }
+
+    .BtnBox {
+      @include flex(space-between, center);
+      button {
+        @include flex(center, center);
+        font-size: small-font-size('regular');
+        padding: 20px;
+        width: 49.5%;
+        color: $color-white;
+        background: $main-color;
+        border-radius: 5px;
+        svg {
+          font-size: 24px;
+        }
+      }
+
+      .Order {
+        background: $color-red;
+      }
+    }
+  }
+}
+
+@include respond-to('mobile') {
+  .Container {
+    padding-top: 10px;
+    h1 {
+      font-size: small-font-size('medium');
+    }
+
+    .AddrBox {
+      .AddrIntro {
+        h2 {
+          font-size: small-font-size('regular');
+        }
+      }
+    }
+  }
+}

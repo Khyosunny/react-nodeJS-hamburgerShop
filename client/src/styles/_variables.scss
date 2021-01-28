@@ -1,0 +1,42 @@
+$breakpoints: (
+  'mobile': (
+    max-width: 365px,
+  ),
+  'tablet': (
+    max-width: 768px,
+  ),
+  'desktop': (
+    max-width: 1024px,
+  ),
+);
+
+/* 컬러 */
+$main-color: #272727;
+$color-white: #fff;
+$color-red: #e22626;
+$color-gray: #8a8a8a;
+$color-right-gray: #ddd;
+
+/* 폰트 사이즈 */
+$base-font-size: (
+  'large': 40px,
+  'medium': 30px,
+  'regular': 22px,
+  'small': 18px,
+  'micro': 16px,
+);
+
+$small-font-size: (
+  'large': 30px,
+  'medium': 24px,
+  'regular': 20px,
+  'small': 16px,
+  'micro': 14px,
+);
+
+/* 폰트 굵기 */
+$base-font-weight: (
+  'bold': 800,
+  'semi-bold': 600,
+  'regular': 400,
+);

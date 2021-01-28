@@ -10,7 +10,6 @@ export default function authFun(SpecificComponent, option, adminRoute = null) {
     const dispatch = useDispatch()
     useEffect(() => {
       dispatch(auth()).then(response => {
-        console.log('auth페이지', response)
         // 로그인을 안한 사람이
         if (!response.payload.isAuth) {
           // 로그인해야 접속 가능한 페이지에 들어갔을 때

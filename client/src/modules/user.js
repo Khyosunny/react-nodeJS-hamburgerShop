@@ -36,23 +36,11 @@ export const loginUser = async data => {
   }
 }
 
-// export const loginUser = dataToSubmit => {
-//   const request = axios
-//     .post(`${USER_SERVER}/login`, dataToSubmit, { withCredentials: true })
-//     .then(response => response.data)
-
-//   return {
-//     type: LOGIN_USER,
-//     payload: request,
-//   }
-// }
-
 export const auth = async () => {
   try {
     const request = await axios.get(`${USER_SERVER}/auth`, {
       withCredentials: true,
     })
-    console.log('request', request)
     return {
       type: AUTH_USER,
       payload: request.data,
@@ -61,17 +49,6 @@ export const auth = async () => {
     console.log(e)
   }
 }
-
-// export const auth = () => {
-//   const request = axios
-//     .get(`${USER_SERVER}/auth`, { withCredentials: true })
-//     .then(response => response.data)
-
-//   return {
-//     type: AUTH_USER,
-//     payload: request,
-//   }
-// }
 
 export const logoutUser = async () => {
   try {

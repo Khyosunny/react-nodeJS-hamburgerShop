@@ -1,18 +1,15 @@
+@import '../../styles/mixin', '../../styles/variables';
+
 .Container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center, column);
   width: 100%;
   height: 100%;
   h2 {
     padding: 100px 0 0;
   }
 
-  & .FormContainer {
-    @extend .Container;
-    justify-content: flex-start;
-    width: 70%;
+  .FormContainer {
+    @include flex(flex-start, center, column);
 
     label {
       width: 300px;
@@ -22,21 +19,44 @@
     input {
       width: 300px;
       height: 50px;
-      border: none;
-      border-bottom: 2px solid #c7c7c7;
+      padding: 10px;
+      border-bottom: 2px solid $color-right-gray;
+      background-color: #f0f0f0;
     }
     button {
-      color: #fff;
-      font-size: 18px;
-      font-weight: 900;
       margin-top: 50px;
       padding: 20px 80px;
-      background-color: #444;
+      color: $color-white;
+      background-color: $main-color;
+      border-radius: 5px;
+      font-size: base-font-size('small');
+      font-weight: base-font-weight('bold');
+
+      &:active {
+        background-color: #000;
+      }
     }
     p {
       width: 300px;
       text-align: left;
       color: #dd2222;
+    }
+  }
+}
+
+@include respond-to('mobile') {
+  .Container {
+    h2 {
+      padding: 10px 0 0;
+    }
+    .FormContainer {
+      label {
+        margin: 10px 0 10px;
+      }
+      button {
+        margin-top: 30px;
+        padding: 20px 50px;
+      }
     }
   }
 }

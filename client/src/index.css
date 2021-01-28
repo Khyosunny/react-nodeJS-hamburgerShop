@@ -1,7 +1,8 @@
 html,
 body,
-.root {
+#root {
   height: 100%;
+  font-family: 'Noto Sans KR';
 }
 body {
   font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI',

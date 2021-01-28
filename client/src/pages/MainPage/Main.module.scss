@@ -1,0 +1,74 @@
+@import '../../styles/mixin', '../../styles/variables';
+@import '../../components/Card/Card';
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  width: 100%;
+
+  .IntroContainer {
+    @include flex(space-between, center);
+    width: 100%;
+
+    .Button {
+      margin: 0 20px;
+      color: $color-gray;
+      font-size: base-font-size('regular');
+      font-weight: base-font-weight('bold');
+    }
+    .active {
+      color: $color-red;
+      border-bottom: 3px solid $color-red;
+    }
+  }
+
+  .MenuContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+}
+
+@include respond-to('tablet') {
+  .Container {
+    padding-top: 20px;
+    .IntroContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      div {
+        @include flex(space-around, center);
+        width: 100%;
+        margin-top: 20px;
+      }
+      .Button {
+        margin: 0;
+        font-size: small-font-size('medium');
+      }
+    }
+
+    .MenuContainer {
+      width: 100%;
+    }
+  }
+}
+
+@include respond-to('mobile') {
+  .Container {
+    padding-top: 10px;
+    .IntroContainer {
+      h1 {
+        font-size: small-font-size('medium');
+      }
+      div {
+        margin-top: 10px;
+      }
+      .Button {
+        font-size: small-font-size('regular');
+      }
+    }
+  }
+}

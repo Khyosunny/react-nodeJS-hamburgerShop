@@ -28,8 +28,17 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 app.use('/api/users', require('./routes/users'))
+app.use('/api/product', require('./routes/product'))
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use('/uploads', express.static('uploads'))
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+  })
+}
 
 app.listen(port, () => {
   console.log(`Server Listening on ${port}`)

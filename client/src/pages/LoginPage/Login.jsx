@@ -15,7 +15,6 @@ export default function Login() {
   })
 
   const onSubmit = data => {
-    console.log('data', data)
     dispatch(loginUser(data))
       .then(response => {
         if (response.payload.loginSuccess) {

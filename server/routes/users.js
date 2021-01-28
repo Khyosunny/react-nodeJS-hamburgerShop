@@ -64,4 +64,42 @@ router.get('/logout', auth, (req, res) => {
   })
 })
 
+router.post('/addToAddress', auth, (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    {
+      $push: {
+        cart: req.body,
+      },
+    },
+    { new: true },
+    (err, user) => {
+      if (err) return res.json({ success: false, err })
+      res.status(200).json(user.cart)
+    },
+  )
+})
+
+router.get('/userAddress', auth, (req, res) => {
+  User.findOne({ _id: req.user._id }, (err, user) => {
+    if (err) return res.status(400).send(err)
+    return res.status(200).json(user.cart)
+  })
+})
+
+router.get('/removeUserAddress', auth, (req, res) => {
+  console.log(req)
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    {
+      $pullAll: { cart: req.user.cart },
+    },
+    { new: true },
+    (err, user) => {
+      if (err) return res.json({ success: false, err })
+      res.status(200).json(user.cart)
+    },
+  )
+})
+
 module.exports = router

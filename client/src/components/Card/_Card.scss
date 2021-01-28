@@ -1,0 +1,90 @@
+@import '../../styles/mixin', '../../styles/variables';
+
+.CardContainer {
+  @include flex(center, center, column);
+  padding: 10px;
+  width: 25%;
+  border-radius: 5px;
+
+  img {
+    width: 100%;
+  }
+
+  .TextContainer {
+    @include flex(center, center, column);
+    width: 100%;
+    margin-top: 20px;
+    div {
+      text-align: center;
+    }
+    h2 {
+      font-weight: 700;
+    }
+    h3 {
+      color: $color-red;
+      font-weight: 700;
+    }
+    .AddtoCart {
+      display: none;
+    }
+  }
+}
+
+@include respond-to('tablet') {
+  .CardContainer {
+    flex-direction: row-reverse;
+    width: 100%;
+    border-top: 1px solid $color-right-gray;
+    img {
+      width: 40%;
+    }
+
+    .TextContainer {
+      align-items: flex-start;
+      justify-content: space-around;
+      margin: 0;
+      padding: 10px 0;
+      height: 100%;
+      div {
+        text-align: start;
+      }
+      h2 {
+        font-size: small-font-size('large');
+      }
+      h3 {
+        color: $color-red;
+        font-size: small-font-size('medium');
+      }
+      .AddtoCart {
+        display: flex;
+        align-items: center;
+        p {
+          font-size: small-font-size('small');
+          font-weight: base-font-weight('semi-bold');
+        }
+      }
+    }
+  }
+}
+
+@include respond-to('mobile') {
+  .CardContainer {
+    .TextContainer {
+      padding: 10px 0;
+      h2 {
+        font-size: small-font-size('regular');
+      }
+      h3 {
+        font-size: small-font-size('small');
+      }
+      .AddtoCart {
+        p {
+          font-size: small-font-size('micro');
+        }
+        svg {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

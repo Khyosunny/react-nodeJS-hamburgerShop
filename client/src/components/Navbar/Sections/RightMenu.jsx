@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { logoutUser } from '../../../modules/user'
 
-export default function RightMenu() {
+import classNames from 'classnames'
+
+import styles from '../Navbar.module.scss'
+
+export default function RightMenu({ hamburger, onMenuClose }) {
   const user = useSelector(state => state.user)
+  const { cartDatas } = useSelector(state => state.cart)
   const history = useHistory()
   const dispatch = useDispatch()
 
@@ -19,8 +25,14 @@ export default function RightMenu() {
       })
       .catch(err => console.log(err))
   }
+
   return (
-    <ul>
+    <ul
+      className={classNames(`${styles['RightMenuContainer']}`, {
+        [styles['open']]: hamburger,
+      })}
+      onClick={onMenuClose}
+    >
       {user.userData && !user.userData.isAuth ? (
         <>
           <li>
@@ -31,9 +43,19 @@ export default function RightMenu() {
           </li>
         </>
       ) : (
-        <li>
-          <button onClick={onLogout}>로그아웃</button>
-        </li>
+        <>
+          <li>
+            <Link to="/upload">메뉴 등록</Link>
+          </li>
+          <li>
+            <Link to="/cart">
+              딜리버리 카트({cartDatas.length > 0 ? cartDatas.length : 0})
+            </Link>
+          </li>
+          <li>
+            <button onClick={onLogout}>로그아웃</button>
+          </li>
+        </>
       )}
     </ul>
   )

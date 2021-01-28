@@ -1,1 +1,5 @@
 export { default as Layout } from './Layout'
+export { default as Card } from './Card'
+export { default as PostNum } from './PostNum'
+export { default as CartItem } from './CartItem'
+export { default as FileUpload } from './FileUpload'
