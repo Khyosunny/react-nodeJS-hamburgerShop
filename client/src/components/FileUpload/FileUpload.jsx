@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone'
 import MenuImageBox from '../MenuImageBox/MenuImageBox'
 import { useDispatch } from 'react-redux'
 import { uploadImages } from '../../modules/product'
+import { IMAGE_SERVER } from '../../config'
 
 import styles from '../../pages/UploadProductPage/UploadProduct.module.scss'
 
@@ -18,7 +19,6 @@ export default function FileUpload({ refreshFunction }) {
 
     dispatch(uploadImages(formData)).then(response => {
       if (response.payload.success) {
-        console.log('response', response.payload)
         setImages([response.payload.filePath])
         refreshFunction([response.payload.filePath])
       } else {
@@ -37,7 +37,7 @@ export default function FileUpload({ refreshFunction }) {
       <MenuImageBox onDeleteImg={onDeleteImg}>
         {Images.map((image, index) => (
           <div className={styles.ImgBox} key={index}>
-            <img src={`http://localhost:5000/${image}`} />
+            <img src={`${IMAGE_SERVER}${image}`} />
           </div>
         ))}
       </MenuImageBox>
