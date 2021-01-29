@@ -4,8 +4,7 @@ import PathName from '../PathName'
 import Footer from '../Footer'
 import styles from './Layout.module.scss'
 
-export default function Layout({ children, match }) {
-  console.log(match)
+export default function Layout({ children }) {
   return (
     <div className={styles.Container}>
       <Navbar />

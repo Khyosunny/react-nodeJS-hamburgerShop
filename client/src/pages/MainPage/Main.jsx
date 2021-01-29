@@ -13,7 +13,7 @@ const menuName = [
   { id: 4, name: '사이드', label: 'side', active: false },
 ]
 
-export default function Main() {
+export default function Main({ user }) {
   const { products } = useSelector(state => state.product)
   const dispatch = useDispatch()
 
@@ -64,7 +64,9 @@ export default function Main() {
       </div>
       <div className={styles.MenuContainer}>
         {productList &&
-          productList.map(item => <Card key={item._id} item={item} />)}
+          productList.map(item => (
+            <Card key={item._id} item={item} user={user} />
+          ))}
       </div>
     </div>
   )

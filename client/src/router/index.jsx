@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-} from "react-router-dom";
-import { Main, Register, Login, UploadProduct, Cart } from "../pages";
-import { Layout } from "../components";
-import Auth from "../hoc/auth";
+} from 'react-router-dom'
+import { Main, Register, Login, UploadProduct, Cart } from '../pages'
+import { Layout } from '../components'
+import Auth from '../hoc/auth'
 
 export default function AppRouter() {
   return (
@@ -23,5 +23,5 @@ export default function AppRouter() {
         </Switch>
       </Layout>
     </Router>
-  );
+  )
 }

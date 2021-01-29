@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../modules/user'
 
@@ -58,6 +58,9 @@ export default function Login() {
         )}
 
         <button type="submit">로그인</button>
+        <Link to="/register" className={styles.RegisterBtn}>
+          회원가입하러 가기
+        </Link>
       </form>
     </div>
   )

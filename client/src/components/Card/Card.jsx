@@ -1,29 +1,34 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { IMAGE_SERVER } from '../../config'
 import { addToCart } from '../../modules/cart'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import styles from '../../pages/MainPage/Main.module.scss'
 
-export default function Card({ item }) {
+export default function Card({ item, user }) {
   const { images, title, price } = item
-  const dispatch = useDispatch()
 
+  const history = useHistory()
+  const dispatch = useDispatch()
   const onAddToCart = item => {
-    const body = {
-      _id: item._id,
-      title: item.title,
-      price: item.price,
-      images: item.images,
-      count: 1,
+    if (user.userData.isAuth) {
+      const body = {
+        _id: item._id,
+        title: item.title,
+        price: item.price,
+        images: item.images,
+        count: 1,
+      }
+      dispatch(addToCart(body))
+      history.push('/cart')
+    } else {
+      alert('로그인 후 이용해주세요')
     }
-    dispatch(addToCart(body))
   }
 
   return (
-    <Link
-      to="/Cart"
+    <div
       onClick={() => {
         onAddToCart(item)
       }}
@@ -45,6 +50,6 @@ export default function Card({ item }) {
           <ArrowForwardIosIcon fontSize="small" />
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
