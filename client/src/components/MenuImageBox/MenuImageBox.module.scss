@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import '../../styles/mixin', '../../styles/variables';
 
 .Container {
   position: relative;
@@ -16,5 +16,18 @@
     height: 30px;
     background-color: #e9e9e9;
     color: $main-color;
+  }
+}
+
+@include respond-to('tablet') {
+  .Container {
+    margin-top: 20px;
+  }
+}
+@include respond-to('mobile') {
+  .Container {
+    margin-top: 10px;
+    width: 250px;
+    height: 200px;
   }
 }

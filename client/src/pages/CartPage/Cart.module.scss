@@ -11,7 +11,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 50px 0;
 
   .ItemBox {
     @include flex(flex-start, center, column);
@@ -127,7 +126,6 @@
 
 @include respond-to('tablet') {
   .Container {
-    padding-top: 20px;
     h1 {
       text-align: center;
     }
@@ -204,17 +202,21 @@
 
 @include respond-to('mobile') {
   .Container {
-    padding-top: 10px;
     h1 {
       font-size: small-font-size('medium');
     }
 
     .AddrBox {
+      padding: 10px 10px;
       .AddrIntro {
         h2 {
           font-size: small-font-size('regular');
         }
       }
+    }
+
+    .AllPrice {
+      padding: 10px;
     }
   }
 }

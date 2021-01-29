@@ -41,7 +41,7 @@
 
     .TextContainer {
       align-items: flex-start;
-      justify-content: space-around;
+      justify-content: space-between;
       margin: 0;
       padding: 10px 0;
       height: 100%;
@@ -59,8 +59,12 @@
         display: flex;
         align-items: center;
         p {
+          color: $color-gray;
           font-size: small-font-size('small');
           font-weight: base-font-weight('semi-bold');
+        }
+        svg {
+          color: $color-gray;
         }
       }
     }
@@ -69,12 +73,15 @@
 
 @include respond-to('mobile') {
   .CardContainer {
+    padding: 10px;
     .TextContainer {
-      padding: 10px 0;
+      padding: 0;
+
       h2 {
         font-size: small-font-size('regular');
       }
       h3 {
+        margin-top: 5px;
         font-size: small-font-size('small');
       }
       .AddtoCart {

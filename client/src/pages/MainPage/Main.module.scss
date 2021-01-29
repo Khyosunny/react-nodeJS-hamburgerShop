@@ -4,7 +4,6 @@
 .Container {
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
   width: 100%;
 
   .IntroContainer {
@@ -33,7 +32,6 @@
 
 @include respond-to('tablet') {
   .Container {
-    padding-top: 20px;
     .IntroContainer {
       display: flex;
       flex-direction: column;
@@ -58,7 +56,6 @@
 
 @include respond-to('mobile') {
   .Container {
-    padding-top: 10px;
     .IntroContainer {
       h1 {
         font-size: small-font-size('medium');

@@ -1,0 +1,31 @@
+@import '../../styles/mixin', '../../styles/variables';
+
+.Container {
+  @include flex(center, center);
+  background-color: $main-color;
+  width: 100%;
+  padding: 20px 0;
+
+  a {
+    width: 35px;
+    height: 35px;
+    svg {
+      color: $color-gray;
+    }
+  }
+  p {
+    color: $color-gray;
+    margin-left: 20px;
+  }
+}
+
+@include respond-to('mobile') {
+  .Container {
+    padding: 10px 15px;
+    p {
+      font-size: small-font-size('micro');
+      margin-left: 10px;
+      text-align: center;
+    }
+  }
+}

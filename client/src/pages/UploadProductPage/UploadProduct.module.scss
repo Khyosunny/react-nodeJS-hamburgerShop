@@ -5,10 +5,6 @@
   @include flex(flex-start, center, column);
   width: 100%;
 
-  h2 {
-    margin-top: 20px;
-  }
-
   .FormContainer {
     display: flex;
     flex-direction: column;

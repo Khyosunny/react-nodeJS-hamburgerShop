@@ -1,0 +1,11 @@
+@import '../../styles/mixin', '../../styles/variables';
+
+.Container {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  background-color: #ffa938;
+  width: 100%;
+  height: 30px;
+  // max-width: 1180px;
+}
