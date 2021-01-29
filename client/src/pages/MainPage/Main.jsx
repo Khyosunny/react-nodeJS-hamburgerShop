@@ -46,6 +46,7 @@ export default function Main({ user }) {
     <div className={styles.Container}>
       <div className={styles.IntroContainer}>
         <h1>메뉴</h1>
+        <p>{process.env.REACT_APP_SERVER_BASE_URL}</p>
         <div>
           {menuList.map(item => {
             return (
