@@ -3,6 +3,7 @@ import { USER_SERVER } from '../config'
 //액션 타입 생성
 const ADD_TO_CART = 'add_to_cart'
 const DELETE_FROM_CART = 'delete_from_cart'
+const ALL_DELETE_FROM_CART = 'all_delete_from_cart'
 const INC_COUNT = 'inc_count'
 const DEC_COUNT = 'dec_count'
 const ADD_TO_ADDRESS = 'add_to_address'
@@ -12,6 +13,7 @@ const REMOVE_ADDRESS = 'remove_address'
 //액션 함수 생성
 export const addToCart = cartData => ({ type: ADD_TO_CART, cartData })
 export const deleteFromCart = _id => ({ type: DELETE_FROM_CART, _id })
+export const AllDeleteFromCart = () => ({ type: ALL_DELETE_FROM_CART })
 export const increaseCount = _id => ({ type: INC_COUNT, _id })
 export const DecreaseCount = _id => ({ type: DEC_COUNT, _id })
 export const addToAddress = async data => {
@@ -91,6 +93,11 @@ export default function cartReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         cartDatas: state.cartDatas.filter(item => item._id !== action._id),
+      }
+    case ALL_DELETE_FROM_CART:
+      return {
+        ...state,
+        cartDatas: [],
       }
     case INC_COUNT:
       return {

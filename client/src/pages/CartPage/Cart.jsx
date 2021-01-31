@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToAddress, getAddress, removeAddress } from '../../modules/cart'
+import {
+  addToAddress,
+  getAddress,
+  removeAddress,
+  AllDeleteFromCart,
+} from '../../modules/cart'
 import { PostNum, CartItem } from '../../components'
 import AddIcon from '@material-ui/icons/Add'
 import classNames from 'classnames'
@@ -22,6 +27,19 @@ export default function Cart() {
 
   const history = useHistory()
   const dispatch = useDispatch()
+
+  const onOrder = () => {
+    if (cartDatas.length === 0) {
+      alert('주문 가능한 상품이 없습니다')
+    } else {
+      if (addressDatas.length === 0) {
+        return alert('배송주소를 입력해주세요')
+      }
+      dispatch(AllDeleteFromCart())
+      alert('주문해주셔서 감사합니다')
+      history.push('/')
+    }
+  }
 
   // 주소검색 팝업창 닫는 이벤트
   const isClose = () => {
@@ -209,7 +227,9 @@ export default function Cart() {
           메뉴 추가
           <AddIcon fontSize="large" />
         </button>
-        <button className={styles.Order}>주문하기</button>
+        <button className={styles.Order} onClick={onOrder}>
+          주문하기
+        </button>
       </div>
       {isPostOpen && <PostNum isClose={isClose} getPostData={getPostData} />}
     </div>
